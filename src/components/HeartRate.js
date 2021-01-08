@@ -13,36 +13,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-function valuetext(value) {
-  return `${value}°C`;
-}
-
 export default function HeartRate (props) {
   const classes = useStyles();
-  const [value, setValue] = React.useState([0]);
 
   console.log('HeartRate props', props)
 
-  const onHeartChange = (event, newValue) => {
-    console.log('>>>>>>onHeartChange', newValue)
-    setValue({
-      heart: newValue
-    });
-  };
-
   return (
-    <div className="box">
+    <div >
       <FavoriteIcon className={classes.icon}/>
       <p>{props.heart} BPM</p>
       <div className={classes.root}>
         <Slider 
            min={props.min}
            max={props.max}
-           value={value}
-           onChange={onHeartChange}
+           value={props.heart}
+           onChange={props.onChange}
            valueLabelDisplay="auto"
            aria-labelledby="range-slider"
-           getAriaValueText={valuetext}/>
+           getAriaValueText={props.valuetext}
+        />
       </div>
     </div>
   )
