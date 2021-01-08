@@ -1,0 +1,15 @@
+.box{
+  height: 190px;
+  padding: 10px;
+  text-align: center;
+}
+.box:nth-child(even) {
+  background-color: #ccc;
+}
+.box:nth-child(add) {
+  background-color: #aaa;
+}
+.box.water {
+  background-color: #3A85FF;
+  color: white;
+}
