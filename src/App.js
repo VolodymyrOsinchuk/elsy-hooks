@@ -31,57 +31,72 @@ export default function App () {
     return `${value}°C`;
   }
 
-  const onHeartChange = (event, newValue) => {
+  const onHeartChange = (newValue) => {
     console.log('>>>>>>onHeartChange', newValue);
     const water = calculateWater({
       heart: newValue
     })
-    console.log('water >>>>', water)
-    setHeart(newValue);
+    setHeart(newValue, water);
+    setWater(water);
+    console.log('water heart >>>>', water)
   };
 
-  const onStepsChange = (event, newValue) => {
+  const onStepsChange = (newValue) => {
     console.log('>>>>>>onStepsChange', newValue)
-    setSteps(newValue);
+    const water = calculateWater({
+      steps: newValue
+    })
+    setSteps(newValue, water);
+    setWater(water);
+    console.log('water steps >>>>', water)
   };
 
-  const onTempChange = (event, newValue) => {
-    console.log('>>>>>>onTempChange', newValue)
-    setTemperature(newValue);
+  const onTempChange = (newValue) => {
+    console.log('onTempChange >>>>', newValue);
+    const water = calculateWater({
+      temperature: temperature
+    })
+    setTemperature(newValue, water);
+    setWater(water);
+    console.log('water temperature >>>>', water)
   };
 
-  function calculateWater (props) {
-    const {heart, temperature, steps} = props;
-    console.log('>>>>>>>>');
-    console.log('>>>heart', heart);
-    console.log('>>>temperature', temperature);
-    console.log('>>>steps', steps);
-    console.log('>>>props calculWater', props);
-
+  const calculateWater = ({ 
+    heart, 
+    temperature, 
+    steps} = {}) => {
+    console.log('calculateWater >>>>');
+    // console.log('heart calculateWater >>>>', heart);
+    // console.log('temperature calculateWater >>>>', temperature);
+    // console.log('steps calculateWater >>>>', steps);
 
     let water = 1.5;
 
     if (temperature > 20) {
-      water = 1.5 + (temperature - 20) * 0.02;
+      water += 1.5 + (temperature - 20) * 0.02;
     };
 
     if (steps > 10000) {
-      water = 1.5 + (steps - 10000) * 0.0002;
+      water += 1.5 + (steps - 10000) * 0.00002;
     };
 
     if (heart > 120) {
-      water = 1.5 + (steps - 120) * 0.0008;
+      water += 1.5 + (heart - 120) * 0.0008;
     };
 
-    setWater({
-      water: water
-    })
+    water = parseInt(Math.round(water * 100)) / 100;
 
+    return water;
   }
 
   return (
     <div className={classes.root}>
       <Grid container spacing={3} >
+        <Grid item xs={6} sm={3} className="box">
+          <Water 
+            water={water} 
+          />
+        </Grid>
         <Grid item xs={6} sm={3} className="box">
           <Person 
             min={MIN_STEPS}
@@ -107,11 +122,6 @@ export default function App () {
             temperature={temperature}
             onChange={onTempChange}
            getAriaValueText={valuetext}
-          />
-        </Grid>
-        <Grid item xs={6} sm={3} className="box">
-          <Water 
-            water={water} 
           />
         </Grid>
       </Grid>

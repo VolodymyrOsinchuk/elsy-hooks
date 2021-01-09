@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Temperature (props) {
   const classes = useStyles();
 
-  console.log('Temperature props', props)
+  // console.log('Temperature props', props)
 
   return (
     <div >

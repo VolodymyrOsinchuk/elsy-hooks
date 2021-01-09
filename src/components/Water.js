@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Water (props) {
   const classes = useStyles();
 
-  console.log('Water props', props)
+  // console.log('Water props', props)
 
   return (
     <div >

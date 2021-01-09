@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Person (props) {
   const classes = useStyles();
 
-  console.log('Props props', props)
+  // console.log('Props props', props)
 
   return (
     <div >

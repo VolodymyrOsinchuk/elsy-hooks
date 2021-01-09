@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 export default function HeartRate (props) {
   const classes = useStyles();
 
-  console.log('HeartRate props', props)
+  // console.log('HeartRate props', props)
 
   return (
     <div >
