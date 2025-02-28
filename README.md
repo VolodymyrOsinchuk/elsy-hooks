@@ -71,15 +71,14 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 https://github.com/VolodymyrOsinchuk/elsy.git
 
-
 echo "# elsy" >> README.md
 git init
-git add README.md
+git add .
 git commit -m "first commit"
 git branch -M main
 git remote add origin https://github.com/VolodymyrOsinchuk/elsy.git
 git push -u origin main
-                
+
 …or push an existing repository from the command line
 git remote add origin https://github.com/VolodymyrOsinchuk/elsy.git
 git branch -M main

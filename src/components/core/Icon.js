@@ -1,22 +1,17 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import FavoriteIcon from '@material-ui/icons/Favorite';
+import React from 'react'
+import FavoriteIcon from '@mui/icons-material/Favorite'
+import { Box, Typography } from '@mui/material'
 
-const useStyles = makeStyles((theme) => ({
-  icon: {
-    fontSize: 100,
-    color: "red"
-  },
-}))
-
-export default function Icon (props) {
-  const classes = useStyles();
-  console.log('Icon props', props)
-
+export default function Icon({ heart }) {
   return (
-    <div className="box">
-      <FavoriteIcon className={classes.icon}/>
-      <p>{props.heart}</p>
-    </div>
+    <Box
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      className="box"
+    >
+      <FavoriteIcon sx={{ fontSize: 100, color: 'red' }} />
+      <Typography variant="h6">{heart} bpm</Typography>
+    </Box>
   )
 }

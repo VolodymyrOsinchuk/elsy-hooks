@@ -1,39 +1,33 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Slider from '@material-ui/core/Slider';
-
-const useStyles = makeStyles({
-  root: {
-    width: 300,
-  },
-});
+import React, { useState } from 'react'
+import { Box, Slider, Typography } from '@mui/material'
 
 function valuetext(value) {
-  return `${value}°C`;
+  return `${value}°C`
 }
 
-function valuesteps(value) {
-  return `${value}°C`;
-}
+export default function RangeSlider({
+  min = -20,
+  max = 40,
+  label = 'Temperature',
+}) {
+  const [value, setValue] = useState(20)
 
-export default function RangeSlider() {
-  const classes = useStyles();
-  const [value, setValue] = React.useState([20]);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+  const handleChange = (_, newValue) => {
+    setValue(newValue)
+  }
 
   return (
-    <div className={classes.root}>
+    <Box width={300} textAlign="center">
+      <Typography variant="h6">{label}</Typography>
       <Slider
-        // min={min}
-        // max={max}
+        min={min}
+        max={max}
         value={value}
         onChange={handleChange}
         valueLabelDisplay="auto"
         getAriaValueText={valuetext}
       />
-    </div>
-  );
+      <Typography>{value}°C</Typography>
+    </Box>
+  )
 }

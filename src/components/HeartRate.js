@@ -1,38 +1,23 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import Slider from '@material-ui/core/Slider';
+import React from 'react'
+import FavoriteIcon from '@mui/icons-material/Favorite'
+import { Box, Slider, Typography } from '@mui/material'
 
-const useStyles = makeStyles((theme) => ({
-  icon: {
-    fontSize: 100,
-    color: "red"
-  },
-  root: {
-    width: 'auto',
-  },
-}))
-
-export default function HeartRate (props) {
-  const classes = useStyles();
-
-  // console.log('HeartRate props', props)
-
+export default function HeartRate({ min, max, heart, onChange, valuetext }) {
   return (
-    <div >
-      <FavoriteIcon className={classes.icon}/>
-      <p>{props.heart} BPM</p>
-      <div className={classes.root}>
-        <Slider 
-           min={props.min}
-           max={props.max}
-           value={props.heart}
-           onChange={props.onChange}
-           valueLabelDisplay="auto"
-           aria-labelledby="range-slider"
-           getAriaValueText={props.valuetext}
+    <Box display="flex" flexDirection="column" alignItems="center" width="100%">
+      <FavoriteIcon sx={{ fontSize: 100, color: 'red' }} />
+      <Typography variant="h6">{heart} BPM</Typography>
+      <Box width={250}>
+        <Slider
+          min={min}
+          max={max}
+          value={heart}
+          onChange={onChange}
+          valueLabelDisplay="auto"
+          aria-labelledby="range-slider"
+          getAriaValueText={valuetext}
         />
-      </div>
-    </div>
+      </Box>
+    </Box>
   )
 }

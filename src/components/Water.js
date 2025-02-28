@@ -1,26 +1,18 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import LocalDrinkIcon from '@material-ui/icons/LocalDrink';
+import React from 'react'
+import LocalDrinkIcon from '@mui/icons-material/LocalDrink'
+import { Box, Typography } from '@mui/material'
 
-const useStyles = makeStyles((theme) => ({
-  icon: {
-    fontSize: 100,
-    color: "blue"
-  },
-  root: {
-    width: 'auto',
-  },
-}))
-
-export default function Water (props) {
-  const classes = useStyles();
-
-  // console.log('Water props', props)
-
+export default function Water({ water }) {
   return (
-    <div >
-      <LocalDrinkIcon className={classes.icon}/>
-      <p>{props.water} L</p>
-    </div>
+    <Box
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      width="100%"
+      height="11.8rem"
+    >
+      <LocalDrinkIcon sx={{ fontSize: 100, color: 'blue' }} />
+      <Typography variant="h6">{water} L</Typography>
+    </Box>
   )
 }

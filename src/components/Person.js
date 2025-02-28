@@ -1,38 +1,23 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import DirectionsWalkIcon from '@material-ui/icons/DirectionsWalk';
-import Slider from '@material-ui/core/Slider';
+import React from 'react'
+import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalk'
+import { Box, Slider, Typography } from '@mui/material'
 
-const useStyles = makeStyles((theme) => ({
-  icon: {
-    fontSize: 100,
-    color: "black"
-  },
-  root: {
-    width: 'auto',
-  },
-}))
-
-export default function Person (props) {
-  const classes = useStyles();
-
-  // console.log('Props props', props)
-
+export default function Person({ min, max, steps, onChange, valuetext }) {
   return (
-    <div >
-      <DirectionsWalkIcon className={classes.icon}/>
-      <p>Steps: {props.steps}</p>
-      <div className={classes.root}>
-        <Slider 
-           min={props.min}
-           max={props.max}
-           value={props.steps}
-           onChange={props.onChange}
-           valueLabelDisplay="auto"
-           aria-labelledby="range-slider"
-           getAriaValueText={props.valuetext}
+    <Box display="flex" flexDirection="column" alignItems="center" width="100%">
+      <DirectionsWalkIcon sx={{ fontSize: 100, color: 'black' }} />
+      <Typography variant="h6">Steps: {steps}</Typography>
+      <Box width={250}>
+        <Slider
+          min={min}
+          max={max}
+          value={steps}
+          onChange={onChange}
+          valueLabelDisplay="auto"
+          aria-labelledby="range-slider"
+          getAriaValueText={valuetext}
         />
-      </div>
-    </div>
+      </Box>
+    </Box>
   )
 }

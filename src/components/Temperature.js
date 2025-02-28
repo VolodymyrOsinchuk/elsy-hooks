@@ -1,38 +1,29 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import WbSunnyIcon from '@material-ui/icons/WbSunny';
-import Slider from '@material-ui/core/Slider';
+import React from 'react'
+import WbSunnyIcon from '@mui/icons-material/WbSunny'
+import { Box, Slider, Typography } from '@mui/material'
 
-const useStyles = makeStyles((theme) => ({
-  icon: {
-    fontSize: 100,
-    color: "yellow"
-  },
-  root: {
-    width: 'auto',
-  },
-}))
-
-export default function Temperature (props) {
-  const classes = useStyles();
-
-  // console.log('Temperature props', props)
-
+export default function Temperature({
+  min,
+  max,
+  temperature,
+  onChange,
+  valuetext,
+}) {
   return (
-    <div >
-      <WbSunnyIcon className={classes.icon}/>
-      <p>{props.temperature} °C</p>
-      <div className={classes.root}>
-        <Slider 
-           min={props.min}
-           max={props.max}
-           value={props.temperature}
-           onChange={props.onChange}
-           valueLabelDisplay="auto"
-           aria-labelledby="range-slider"
-           getAriaValueText={props.valuetext}
+    <Box display="flex" flexDirection="column" alignItems="center" width="100%">
+      <WbSunnyIcon sx={{ fontSize: 100, color: 'yellow' }} />
+      <Typography variant="h6">{temperature} °C</Typography>
+      <Box width={250}>
+        <Slider
+          min={min}
+          max={max}
+          value={temperature}
+          onChange={onChange}
+          valueLabelDisplay="auto"
+          aria-labelledby="range-slider"
+          getAriaValueText={valuetext}
         />
-      </div>
-    </div>
+      </Box>
+    </Box>
   )
 }
